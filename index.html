@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <p id="view-highscores">View Highscores</p>
+        <div class="timer">Time: <span>0</span></div>
+    </header>
+
+    <main>
+        <section class="introduction-section">
+            <h1 class="title">Coding Quiz Challenge</h1>
+            <p>Are you ready to test your knowledge? Beat the clock while answering the following code-related
+                questions. Keep in mind that incorrect answers will penalize your time (score) by ten seconds.</p>
+            <button id="start-quiz">Start Quiz</button>
+        </section>
+        <section class="question-section">
+            <h1 id="question-title"></h1>
+            <ul>
+                <li><button id="answer-1"></button></li>
+                <li><button id="answer-2"></button></li>
+                <li><button id="answer-3"></button></li>
+                <li><button id="answer-4"></button></li>
+            </ul>
+            <div class="question-result">
+                <hr>
+                <p id="result"></p>
+            </div>
+        </section>
+        <section class="results-section">
+            <h1>All done!</h1>
+            <p>Your score is: <span id="score"></span></p>
+            <form id="initials-form">
+                <label>Enter initials:
+                    <input type="text" id="initials">
+                </label>
+                <button type="submit">Submit</button>
+                <button type="button">Skip</button>
+            </form>
+        </section>
+        <section class="highscores-section">
+            <h1>Highscores</h1>
+            <ul id="highscores"></ul>
+            <div>
+                <button id="go-back">Go Back</button>
+                <button id="clear-highscores">Clear Highscores</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

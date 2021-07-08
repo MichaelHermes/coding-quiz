@@ -1,0 +1,105 @@
+* {
+    font-family: 'Dosis', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    border:lightseagreen solid 3rem;
+}
+
+header {
+    padding: 1rem;
+}
+
+#view-highscores {
+    display: inline;
+    font-weight: bolder;
+    font-size: 125%;
+}
+
+#view-highscores:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.timer {
+    float: right;
+    font-weight: bolder;
+    font-size: 125%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 20rem;
+}
+
+.introduction-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+ul li button {
+    text-align: left;
+    margin: 0.25rem 0;
+}
+
+button {
+    background-color: lightsalmon;
+    width: auto;
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: crosshair;
+}
+
+.question-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+}
+
+.question-result {
+    width: 100%;
+}
+
+#result {
+    font-style: italic;
+}
+
+.results-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.results-section button {
+    width: 5rem;
+}
+
+.highscores-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#highscores li {
+    background: rgba(255, 160, 122, .7);
+    margin: 0.1rem;
+}
+
+.highscores-section button {
+    display: inline;
+}
