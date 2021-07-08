@@ -4,21 +4,21 @@ let viewHighscoresEl = document.getElementById("view-highscores");
 let timerEl = document.querySelector(".timer");
 let timeRemainingEl = document.querySelector(".timer span");
 // Introduction section elements
-let introductionSectionEl = document.querySelector(".introduction-section");
+let introductionSectionEl = document.querySelector(".introduction");
 let startQuizButton = document.getElementById("start-quiz");
 // Question section elements
-let questionSectionEl = document.querySelector(".question-section");
+let questionSectionEl = document.querySelector(".question");
 let questionTitleEl = document.getElementById("question-title");
-let answerButtons = document.querySelectorAll(".question-section button");
+let answerButtons = document.querySelectorAll(".question button");
 let questionResultEl = document.querySelector(".question-result");
 let resultEl = document.getElementById("result");
 // Results section elements
-let resultsSectionEl = document.querySelector(".results-section");
+let resultsSectionEl = document.querySelector(".results");
 let initialsFormEl = document.getElementById("initials-form");
 let initialsInputEl = document.getElementById("initials");
-let submitButton = document.querySelector(".results-section form button");
+let submitButton = document.querySelector(".results form button");
 // Highscores section elements
-let highscoresSectionEl = document.querySelector(".highscores-section");
+let highscoresSectionEl = document.querySelector(".highscores");
 let highscoresListEl = document.getElementById("highscores");
 let goBackButton = document.getElementById("go-back");
 let clearHighscoresButton = document.getElementById("clear-highscores");
@@ -50,15 +50,21 @@ let score = 0;
 let questions = [];
 let highscores = [];
 
+// Set an element's display to 'flex' so that it renders on the page.
 let show = function (element) {
+    //element.classList.add("is-display");
     element.style.display = "flex";
 }
 
+// Set an element's display to 'block' so that it renders on the page.
 let showBlock = function (element) {
+    //element.classList.add("is-display-block");
     element.style.display = "block";
 }
 
+// Set an element's display to 'none' so that it is not rendered on the page.
 let hide = function (element) {
+    //element.classList.remove("is-display");
     element.style.display = "none";
 }
 
@@ -71,6 +77,7 @@ function initialize() {
     applicationState.state = applicationStates.INTRO;
 }
 
+// Construct the list of questions to be presented to the user.
 function initializeQuestions() {
     questions = [
         {
@@ -145,7 +152,7 @@ function handleApplicationState() {
             viewHighscoresEl.style.visibility = "hidden";
             hide(introductionSectionEl);
             hide(questionSectionEl);
-            hide(questionResultEl);
+            //hide(questionResultEl);
             show(resultsSectionEl);
             hide(highscoresSectionEl);
             break;
@@ -282,6 +289,8 @@ questionSectionEl.addEventListener("click", function (event) {
             resultEl.textContent = "Incorrect";
         }
 
+        // Clear out any previous timer to allow for a "fresh" 1-second timer.
+        clearInterval(questionAnswerTimer);
         showQuestionResultOnTimer();
     }
 
@@ -289,8 +298,19 @@ questionSectionEl.addEventListener("click", function (event) {
     getNextQuestion();
 })
 
+// Shows the question result and hides it after 1-second of being on screen.
 function showQuestionResultOnTimer() {
     showBlock(questionResultEl);
+
+    // Create a timer that will hide the question result after 1 second.
+    questionAnswerTimer = setInterval(function () {
+        // If the question result is currenlty displayed, hide it.
+        if (getComputedStyle(questionResultEl).display === "block") {
+            hide(questionResultEl);
+        }
+        // Stop this timer after 1 execution.
+        clearInterval(questionAnswerTimer);
+    }, 1000);
 }
 
 // Register a click event handler for the initials form and check for button clicks.

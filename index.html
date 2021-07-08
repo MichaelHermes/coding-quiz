@@ -22,13 +22,13 @@
     </header>
 
     <main>
-        <section class="introduction-section">
+        <section class="introduction">
             <h1 class="title">Coding Quiz Challenge</h1>
             <p>Are you ready to test your knowledge? Beat the clock while answering the following code-related
                 questions. Keep in mind that incorrect answers will penalize your time (score) by ten seconds.</p>
             <button id="start-quiz">Start Quiz</button>
         </section>
-        <section class="question-section">
+        <section class="question toggle-section">
             <h1 id="question-title"></h1>
             <ul>
                 <li><button id="answer-1"></button></li>
@@ -41,7 +41,7 @@
                 <p id="result"></p>
             </div>
         </section>
-        <section class="results-section">
+        <section class="results toggle-section">
             <h1>All done!</h1>
             <p>Your score is: <span id="score"></span></p>
             <form id="initials-form">
@@ -52,7 +52,7 @@
                 <button type="button">Skip</button>
             </form>
         </section>
-        <section class="highscores-section">
+        <section class="highscores toggle-section">
             <h1>Highscores</h1>
             <ul id="highscores"></ul>
             <div>
