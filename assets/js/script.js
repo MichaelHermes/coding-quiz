@@ -23,7 +23,7 @@ let goBackButton = document.getElementById("go-back");
 let clearHighscoresButton = document.getElementById("clear-highscores");
 
 // Constants
-const quizTime = 60;
+const quizTime = 100;
 const highscoresStorageKey = "coding-quiz-highscores";
 const applicationStates = {
     INTRO: "introduction",
