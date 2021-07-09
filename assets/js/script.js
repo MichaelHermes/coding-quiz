@@ -118,7 +118,7 @@ function initializeQuestions() {
             Question: "Which of the following is the correct syntax for referring to an external style sheet?",
             Answers: ["<style src=example.css>", "<style src=\"example.css\">", "<stylesheet> example.css </stylesheet>", "<link rel=\"stylesheet\" type=\"text/css\" href=\"example.css\">"],
             CorrectAnswer: 4
-        },
+        }
     ];
 }
 

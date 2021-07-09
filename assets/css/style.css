@@ -3,10 +3,6 @@
     box-sizing: border-box;
 }
 
-html {
-    /* min-width: 240px; */
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -83,7 +79,7 @@ button:hover {
 }
 
 .question-result {
-    width: 100%;
+    width: 35%;
 }
 
 #result {
@@ -96,6 +92,10 @@ button:hover {
 
 .results-section button {
     width: 5rem;
+}
+
+#initials {
+    width: 35%;
 }
 
 .highscores {
@@ -115,11 +115,23 @@ button:hover {
     body {
         border-width: 2rem;
     }
+
+    .question-result {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 420px) {
     body {
         border-width: 1rem;
         font-size: 85%;
+    }
+
+    .question-result {
+        width: 85%;
+    }
+
+    #initials {
+        width: 20%;
     }
 }
