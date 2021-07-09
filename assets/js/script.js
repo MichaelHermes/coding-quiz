@@ -16,7 +16,6 @@ let resultEl = document.getElementById("result");
 let resultsSectionEl = document.querySelector(".results");
 let initialsFormEl = document.getElementById("initials-form");
 let initialsInputEl = document.getElementById("initials");
-let submitButton = document.querySelector(".results form button");
 // Highscores section elements
 let highscoresSectionEl = document.querySelector(".highscores");
 let highscoresListEl = document.getElementById("highscores");
@@ -25,7 +24,7 @@ let clearHighscoresButton = document.getElementById("clear-highscores");
 
 // Constants
 const quizTime = 60;
-const highscoresStorageKey = "highscores";
+const highscoresStorageKey = "coding-quiz-highscores";
 const applicationStates = {
     INTRO: "introduction",
     QUESTION: "question",
@@ -44,9 +43,8 @@ let applicationState = {
         handleApplicationState();
     }
 }
-let timeRemaining, quizTimerInterval, question;
-let questionAnswerTimer;
-let score = 0;
+
+let timeRemaining, quizTimerInterval, question, questionAnswerTimer;
 let questions = [];
 let highscores = [];
 
@@ -118,12 +116,13 @@ function initializeQuestions() {
             CorrectAnswer: 3
         }, {
             Question: "Which of the following is the correct syntax for referring to an external style sheet?",
-            Answers: ["<style src=example.css>", "<style src=\"example.css\">", "<stylesheet>example.css</stylesheet>", "<link rel=\"stylesheet\" type=\"text/css\" href=\"example.css\">"],
+            Answers: ["<style src=example.css>", "<style src=\"example.css\">", "<stylesheet> example.css </stylesheet>", "<link rel=\"stylesheet\" type=\"text/css\" href=\"example.css\">"],
             CorrectAnswer: 4
         },
     ];
 }
 
+// This method is called whenever the applicationState changes and updates the display.
 function handleApplicationState() {
     switch (applicationState.state) {
         case applicationStates.INTRO:
@@ -170,6 +169,7 @@ function handleApplicationState() {
     }
 }
 
+// Retrieves any current highscores from local storage.
 function loadHighscoresFromStorage() {
     // Retrieve the current highscores.
     highscores = JSON.parse(localStorage.getItem(highscoresStorageKey));
@@ -269,7 +269,23 @@ function populateHighscores() {
     }
 }
 
-// Event Listeners
+// Shows the question result and hides it after 1-second of being on screen.
+function showQuestionResultOnTimer() {
+    showBlock(questionResultEl);
+
+    // Create a timer that will hide the question result after 1 second.
+    questionAnswerTimer = setInterval(function () {
+        // If the question result is currenlty displayed, hide it.
+        if (getComputedStyle(questionResultEl).display === "block") {
+            hide(questionResultEl);
+        }
+        // Stop this timer after 1 execution.
+        clearInterval(questionAnswerTimer);
+    }, 1000);
+}
+
+//#region Event Listeners
+
 // Register the click event handler for the Start Quiz button.
 startQuizButton.addEventListener("click", startQuiz);
 
@@ -292,26 +308,11 @@ questionSectionEl.addEventListener("click", function (event) {
         // Clear out any previous timer to allow for a "fresh" 1-second timer.
         clearInterval(questionAnswerTimer);
         showQuestionResultOnTimer();
+
+        // Get the next question.
+        getNextQuestion();
     }
-
-    // Get the next question.
-    getNextQuestion();
 })
-
-// Shows the question result and hides it after 1-second of being on screen.
-function showQuestionResultOnTimer() {
-    showBlock(questionResultEl);
-
-    // Create a timer that will hide the question result after 1 second.
-    questionAnswerTimer = setInterval(function () {
-        // If the question result is currenlty displayed, hide it.
-        if (getComputedStyle(questionResultEl).display === "block") {
-            hide(questionResultEl);
-        }
-        // Stop this timer after 1 execution.
-        clearInterval(questionAnswerTimer);
-    }, 1000);
-}
 
 // Register a click event handler for the initials form and check for button clicks.
 initialsFormEl.addEventListener("click", function (event) {
@@ -330,6 +331,9 @@ initialsFormEl.addEventListener("click", function (event) {
             if (initialsInputEl.value !== "") {
                 recordHighscore(initialsInputEl.value);
                 initialsInputEl.value = "";
+            }
+            else {
+                return;
             }
         }
 
@@ -357,3 +361,5 @@ clearHighscoresButton.addEventListener("click", function () {
 viewHighscoresEl.addEventListener("click", function () {
     applicationState.state = applicationStates.HIGHSCORES;
 });
+
+//#endregion

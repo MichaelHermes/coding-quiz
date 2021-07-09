@@ -21,27 +21,23 @@
         <div class="timer">Time: <span>0</span></div>
     </header>
 
-    <main>
-        <section class="introduction">
+    <main class="flex-column">
+        <section class="introduction flex-column">
             <h1 class="title">Coding Quiz Challenge</h1>
             <p>Are you ready to test your knowledge? Beat the clock while answering the following code-related
                 questions. Keep in mind that incorrect answers will penalize your time (score) by ten seconds.</p>
             <button id="start-quiz">Start Quiz</button>
         </section>
-        <section class="question toggle-section">
+        <section class="question flex-column">
             <h1 id="question-title"></h1>
-            <ul>
+            <ul class="answers flex-column">
                 <li><button id="answer-1"></button></li>
                 <li><button id="answer-2"></button></li>
                 <li><button id="answer-3"></button></li>
                 <li><button id="answer-4"></button></li>
             </ul>
-            <div class="question-result">
-                <hr>
-                <p id="result"></p>
-            </div>
         </section>
-        <section class="results toggle-section">
+        <section class="results flex-column">
             <h1>All done!</h1>
             <p>Your score is: <span id="score"></span></p>
             <form id="initials-form">
@@ -52,9 +48,13 @@
                 <button type="button">Skip</button>
             </form>
         </section>
-        <section class="highscores toggle-section">
+        <section class="question-result">
+            <hr>
+            <p id="result"></p>
+        </section>
+        <section class="highscores flex-column">
             <h1>Highscores</h1>
-            <ul id="highscores"></ul>
+            <ul id="highscores" class="flex-column"></ul>
             <div>
                 <button id="go-back">Go Back</button>
                 <button id="clear-highscores">Clear Highscores</button>

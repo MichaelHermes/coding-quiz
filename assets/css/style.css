@@ -3,48 +3,58 @@
     box-sizing: border-box;
 }
 
+html {
+    /* min-width: 240px; */
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     min-height: 100vh;
     border:lightseagreen solid 3rem;
 }
 
 header {
     padding: 1rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #view-highscores {
-    display: inline;
     font-weight: bolder;
     font-size: 125%;
+    text-decoration: underline;
 }
 
 #view-highscores:hover {
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .timer {
-    float: right;
     font-weight: bolder;
     font-size: 125%;
+    margin: 1rem 0;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 2rem 20rem;
+    padding: 1rem;
 }
 
 .introduction {
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
 ul {
-    display: flex;
-    flex-direction: column;
     list-style: none;
     padding: 0;
 }
@@ -65,10 +75,11 @@ button:hover {
 }
 
 .question {
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    align-self: flex-start;
+}
+
+.answers {
+    align-self: center;
 }
 
 .question-result {
@@ -80,8 +91,6 @@ button:hover {
 }
 
 .results {
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
 }
 
@@ -90,8 +99,6 @@ button:hover {
 }
 
 .highscores {
-    display: flex;
-    flex-direction: column;
     align-items: stretch;
 }
 
@@ -104,14 +111,15 @@ button:hover {
     display: inline;
 }
 
-/* .toggle-section {
-    display: "none";
+@media screen and (max-width: 800px) {
+    body {
+        border-width: 2rem;
+    }
 }
 
-.toggle-section.is-display {
-    display: flex;
+@media screen and (max-width: 420px) {
+    body {
+        border-width: 1rem;
+        font-size: 85%;
+    }
 }
-
-.toggle-section.is-display-block {
-    display: block;
-} */
